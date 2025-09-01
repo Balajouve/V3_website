@@ -1,0 +1,26 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>V3 Insurance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-blue-800 text-white">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <a href="{% url 'home' %}" class="text-2xl font-bold">V3 Insurance</a>
+      <nav class="space-x-4">
+        <a href="{% url 'home' %}" class="hover:underline">Home</a>
+        <a href="{% url 'about' %}" class="hover:underline">About</a>
+        <a href="{% url 'services' %}" class="hover:underline">Services</a>
+        <a href="{% url 'quote' %}" class="hover:underline">Get Quote</a>
+        <a href="{% url 'contact' %}" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-6xl mx-auto p-6">{% block content %}{% endblock %}</main>
+  <footer class="bg-gray-900 text-white text-center p-4 mt-8">© 2025 V3 Insurance. All rights reserved.</footer>
+</body>
+</html>

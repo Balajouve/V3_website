@@ -1,0 +1,32 @@
+    {% extends 'core/base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Quote Calculator</h2>
+<div class="bg-white p-6 rounded shadow max-w-xl">
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    <div>
+      <label class="block font-semibold">Insurance Type</label>
+      <select name="insurance_type" class="border rounded p-2 w-full">
+        <option value="life">Life Insurance</option>
+        <option value="health">Health Insurance</option>
+        <option value="vehicle">Vehicle Insurance</option>
+        <option value="business">Business Insurance</option>
+      </select>
+    </div>
+    <div>
+      <label class="block font-semibold">Coverage Amount (₹)</label>
+      <input type="number" name="coverage" class="border rounded p-2 w-full" required>
+    </div>
+    <div>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded">Calculate</button>
+    </div>
+  </form>
+  {% if result %}
+  <div class="mt-4 bg-blue-50 border border-blue-100 p-4 rounded">
+    <p><strong>Type:</strong> {{ result.insurance_type|capfirst }}</p>
+    <p><strong>Coverage:</strong> ₹{{ result.coverage }}</p>
+    <p><strong>Estimated Annual Premium:</strong> ₹{{ result.premium }}</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+    {% extends 'core/base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold">About V3 Insurance</h2>
+<p class="mt-4 text-gray-700">V3 Insurance provides a range of insurance products tailored to your needs. Our mission is to make insurance simple and accessible.</p>
+<section class="mt-8">
+  <h3 class="text-xl font-bold mb-3">Frequently Asked Questions</h3>
+  <div class="space-y-3">
+    {% for f in faqs %}
+    <div x-data="{open:false}" class="bg-white rounded shadow p-4">
+      <button @click="open=!open" class="w-full text-left font-semibold">{{ f.question }}</button>
+      <div x-show="open" class="mt-2 text-gray-600">{{ f.answer }}</div>
+    </div>
+    {% empty %}
+    <p>No FAQs yet. Add from admin.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+    {% extends 'core/base.html' %}
+{% block content %}
+<section class="text-center py-12">
+  <h1 class="text-4xl md:text-5xl font-extrabold">Secure Your Future with <span class="text-blue-600">V3 Insurance</span></h1>
+  <p class="mt-4 text-lg text-gray-600">Reliable, affordable insurance for individuals and businesses.</p>
+  <div class="mt-6 space-x-3">
+    <a href="{% url 'quote' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg">Get a Quote</a>
+    <a href="{% url 'contact' %}" class="inline-block border border-blue-600 text-blue-600 px-6 py-3 rounded-lg">Contact Us</a>
+  </div>
+</section>
+<section class="mt-10">
+  <h2 class="text-2xl font-bold mb-4">Our Services</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    {% for s in services %}
+    <div class="bg-white rounded-lg shadow p-5 hover:shadow-lg transition">
+      <div class="text-3xl">{{ s.icon }}</div>
+      <h3 class="font-bold mt-2">{{ s.name }}</h3>
+      <p class="text-gray-600 mt-1">{{ s.short_description }}</p>
+    </div>
+    {% empty %}
+    <p>No services yet. Add from admin.</p>
+    {% endfor %}
+  </div>
+</section>
+<section class="mt-12">
+  <h2 class="text-2xl font-bold mb-4">What Our Clients Say</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for t in testimonials %}
+    <div class="bg-white rounded-lg shadow p-5">
+      <p class="text-gray-700">"{{ t.feedback|truncatechars:120 }}"</p>
+      <p class="mt-3 font-semibold">- {{ t.client_name }}</p>
+    </div>
+    {% empty %}
+    <p>No testimonials yet.</p>
+    {% endfor %}
+  </div>
+</section>
+<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+  <div class="bg-white p-6 rounded shadow">
+    <h3 class="text-3xl font-bold text-blue-600">{{ counters.clients }}</h3>
+    <p class="mt-2 text-gray-600">Happy Clients</p>
+  </div>
+  <div class="bg-white p-6 rounded shadow">
+    <h3 class="text-3xl font-bold text-blue-600">{{ counters.policies }}</h3>
+    <p class="mt-2 text-gray-600">Policies Issued</p>
+  </div>
+  <div class="bg-white p-6 rounded shadow">
+    <h3 class="text-3xl font-bold text-blue-600">{{ counters.years }}</h3>
+    <p class="mt-2 text-gray-600">Years Experience</p>
+  </div>
+</section>
+{% endblock %}

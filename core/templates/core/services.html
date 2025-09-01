@@ -1,0 +1,14 @@
+    {% extends 'core/base.html' %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Our Services</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {% for s in services %}
+  <div class="bg-white p-6 rounded shadow">
+    <h3 class="font-bold text-xl">{{ s.name }}</h3>
+    <p class="mt-2 text-gray-600">{{ s.description }}</p>
+  </div>
+  {% empty %}
+  <p>No services yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
